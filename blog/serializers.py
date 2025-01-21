@@ -21,4 +21,4 @@ class PublicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Publication
         fields = '__all__'
-        read_only_fielda = ['id', 'user', 'created', 'updated']
+        read_only_fielda = ['id', 'user', 'create', 'updates']

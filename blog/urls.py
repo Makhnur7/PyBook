@@ -1,5 +1,6 @@
 from django.urls import path
 from dj_rest_auth.views import LoginView
+from .views import PublicationListCreateAPIView, PublicationRetrieveUpdateDestroyAPIView
 
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -27,15 +28,8 @@ urlpatterns = [
     path('login', LoginView.as_view(), name='login'),
     path('publications/', view=views.PublicationListCreateAPIView.as_view()),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='swagger-ui'),
-    path(
-        'swagger/',
-        schema_view.with_ui('swagger', cache_timeout=0),
-        name='schema-swagger-ui'
-    ),
-    path(
-        'redoc/',
-        schema_view.with_ui('redoc', cache_timeout=0),
-        name='schema-redoc'
-    ),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path('publications/', PublicationListCreateAPIView.as_view(), name='publication-list-create'),
+    path('publications/<int:pk>/', PublicationRetrieveUpdateDestroyAPIView.as_view(), name='publication-detail'),
 ]
 

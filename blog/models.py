@@ -15,16 +15,12 @@ class Category(models.Model):
 
 class Publication(models.Model):
 
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='publications', 
-    )
-    category = models.ForeignKey(
-        Category, on_delete=models.SET_NULL, null=True, related_name='publications'
-    )
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='publications')
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='publications')
     image = models.ImageField(upload_to="publications/", null=True, blank=True)
     content = models.CharField(max_length=2500)
     is_archived = models.BooleanField(default=False)
     create = models.DateTimeField(auto_now_add=True)
     updates = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='publications')
     
