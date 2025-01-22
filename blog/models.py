@@ -22,5 +22,5 @@ class Publication(models.Model):
     is_archived = models.BooleanField(default=False)
     create = models.DateTimeField(auto_now_add=True)
     updates = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='publications')
+
     
